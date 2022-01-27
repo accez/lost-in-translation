@@ -1,11 +1,12 @@
-import { images } from './SignLanguageImages';
-const SignItem = () => {
+//import { images } from './SignLanguageImages';
+// eslint-disable-next-line react/prop-types
+const SignItem = ({ signImage }) => {
   console.log('sign item');
 
   return (
     <div>
       <p>item</p>
-      <img src={images.b} />
+      <img src={signImage} />
     </div>
   );
 };

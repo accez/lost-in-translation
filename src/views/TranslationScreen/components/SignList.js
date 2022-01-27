@@ -1,10 +1,16 @@
 import SignItem from './SignItem';
-const SingList = () => {
+import { images } from './SignLanguageImages';
+const SignList = () => {
+  const stringArray = ['h', 'j'];
+  console.log(stringArray);
+
   return (
     <div>
-      <SignItem />
+      {stringArray.map((char, index) => (
+        <SignItem signImage={images[char]} key={index} />
+      ))}
     </div>
   );
 };
 
-export default SingList;
+export default SignList;
