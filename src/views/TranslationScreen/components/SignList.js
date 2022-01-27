@@ -1,7 +1,9 @@
 import SignItem from './SignItem';
 import { images } from './SignLanguageImages';
 const SignList = () => {
-  const stringArray = ['h', 'j'];
+  //shghehhnhhsbhahhhphihuhhkhhhh
+  const strArray = 'hswheghhkhhshghehhnhhsbha';
+  const stringArray = strArray.split('');
   console.log(stringArray);
 
   return (
