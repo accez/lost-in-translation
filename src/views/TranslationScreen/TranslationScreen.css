@@ -1,0 +1,59 @@
+h1 {
+  color: #fff;
+  margin-bottom: 10px;
+  font-size: 40px;
+}
+
+h2 {
+  color: #fff;
+}
+.translation-screen-body {
+  height: 100vh;
+  background: linear-gradient(to top, #fff 65%, #fdcd3b 65%);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  flex-direction: column;
+}
+
+.container {
+  align-self: center;
+}
+
+.box-container {
+  margin-bottom: 250px;
+  align-self: center;
+}
+.text {
+  align-self: center;
+}
+
+.logo-container {
+  display: flex;
+  position: relative;
+  top: 0;
+  left: 0;
+  justify-content: space-between;
+}
+.logo {
+  position: absolute;
+  top: 10px;
+  left: 30px;
+  z-index: 1;
+  width: 200px;
+}
+
+.splash {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 200px;
+}
+
+.card {
+  width: 50vw;
+  height: 20vh;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  background: linear-gradient(180deg, #fff 85%, #845ec2 15%);
+}
