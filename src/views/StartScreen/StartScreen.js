@@ -1,6 +1,11 @@
-import './StartScreen.css';
+import React from 'react';
+
+import InputComponent from '../../components/InputComponent/InputComponent';
+
 import logo from '../../assets/Logo-Hello.png';
 import splash from '../../assets/Splash.svg';
+import './StartScreen.css';
+
 const StartScreen = () => {
   return (
     <div className="start-screen-body">
@@ -16,7 +21,9 @@ const StartScreen = () => {
           </div>
         </div>
         <div className="box-container">
-          <div className="card"></div>
+          <div className="card">
+            <InputComponent placeholder="What is your name?" />
+          </div>
         </div>
       </div>
     </div>
