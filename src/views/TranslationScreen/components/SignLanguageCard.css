@@ -21,3 +21,12 @@
   height: 75%;
   margin-left: 0%;
 }
+
+.container {
+  align-self: center;
+}
+
+.box-container {
+  margin-bottom: 250px;
+  align-self: center;
+}
