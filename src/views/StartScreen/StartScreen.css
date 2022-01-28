@@ -51,6 +51,9 @@ h2 {
 }
 
 .card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 50vw;
   height: 20vh;
   border-radius: 10px;
