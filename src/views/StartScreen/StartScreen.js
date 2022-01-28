@@ -1,12 +1,17 @@
 import React from 'react';
 
 import InputComponent from '../../components/InputComponent/InputComponent';
+import useFetch from '../../helpers/useFetch';
+import { config } from '../../helpers/config';
 
 import logo from '../../assets/Logo-Hello.png';
 import splash from '../../assets/Splash.svg';
 import './StartScreen.css';
 
 const StartScreen = () => {
+  const res = useFetch(`${config.url}/translations`, {});
+  console.log(res.response);
+
   return (
     <div className="start-screen-body">
       <div className="container">
