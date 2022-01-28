@@ -1,0 +1,14 @@
+.translation-screen-body {
+  height: 100vh;
+  background: linear-gradient(to top, #fff 65%, #fdcd3b 65%);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  flex-direction: column;
+}
+
+.input {
+  position: absolute;
+  margin-top: -34%;
+  margin-left: 35%;
+}
