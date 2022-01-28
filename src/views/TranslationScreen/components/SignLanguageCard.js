@@ -4,7 +4,11 @@ const SignLanguageCard = () => {
   return (
     <div className="box-container">
       <div className="card">
-        <SignList />
+        <div className="output-area">
+          <div className="sign-content">
+            <SignList />
+          </div>
+        </div>
       </div>
     </div>
   );

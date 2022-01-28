@@ -4,9 +4,9 @@ const SignItem = ({ signImage }) => {
   console.log('sign item');
 
   return (
-    <div>
+    <>
       <img src={signImage} />
-    </div>
+    </>
   );
 };
 
