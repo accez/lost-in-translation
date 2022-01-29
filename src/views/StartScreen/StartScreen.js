@@ -40,6 +40,12 @@ const StartScreen = () => {
     }
   };
 
+  /**
+   *Check if user exist.
+   * If the user exists then it will be added to local storage.
+   * @param {Object} users The fetched users object
+   * @returns {Boolean} If the user exist in database
+   */
   const doesUserExistInDatabase = async (users) => {
     for (const user of users) {
       if (user.username === userInput) {
@@ -48,10 +54,20 @@ const StartScreen = () => {
       }
     }
   };
+
+  /**
+   * Saves object to local storage.
+   * @param {String} key The key name of the object.
+   * @param {Object} userObject The object you want to add to local storage.
+   */
   const storeUserInLocalStorage = (key, userObject) => {
     localStorage.setItem(key, userObject);
   };
 
+  /**
+   * Get the user name from input onChange.
+   * @param {String} event The targeted String.
+   */
   const getUserName = (event) => {
     setUserInput(event.target.value);
   };
