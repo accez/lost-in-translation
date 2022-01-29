@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import InputComponent from '../../components/InputComponent/InputComponent';
 import { config } from '../../helpers/config';
+// import useFetch from '../../helpers/useFetch';
 
 import logo from '../../assets/Logo-Hello.png';
 import splash from '../../assets/Splash.svg';
@@ -9,6 +10,7 @@ import './StartScreen.css';
 
 const StartScreen = () => {
   const [userInput, setUserInput] = useState('');
+  // const data = useFetch(`${config.url}/translations`, {});
 
   const handleSubmit = async (event) => {
     const uniq = new Date().getTime();
@@ -26,10 +28,15 @@ const StartScreen = () => {
           translations: []
         })
       });
-      await response.json();
+      let jsonResponse = await response.json();
+      storeUserInLocalStorage('user', JSON.stringify(jsonResponse));
     } catch (error) {
       console.error(console.error());
     }
+  };
+
+  const storeUserInLocalStorage = (key, userObject) => {
+    localStorage.setItem(key, userObject);
   };
 
   const getUserName = (event) => {
