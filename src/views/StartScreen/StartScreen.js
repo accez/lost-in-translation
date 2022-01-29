@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import InputComponent from '../../components/InputComponent/InputComponent';
 import { config } from '../../helpers/config';
-// import useFetch from '../../helpers/useFetch';
+import useFetch from '../../helpers/useFetch';
 
 import logo from '../../assets/Logo-Hello.png';
 import splash from '../../assets/Splash.svg';
@@ -10,31 +10,44 @@ import './StartScreen.css';
 
 const StartScreen = () => {
   const [userInput, setUserInput] = useState('');
-  // const data = useFetch(`${config.url}/translations`, {});
+  const users = useFetch(`${config.url}/translations`, {});
 
   const handleSubmit = async (event) => {
     const uniq = new Date().getTime();
     event.preventDefault();
-    try {
-      let response = await fetch(`${config.url}/translations`, {
-        method: 'POST',
-        headers: {
-          'X-API-Key': config.apiKey,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          id: uniq,
-          username: userInput,
-          translations: []
-        })
-      });
-      let jsonResponse = await response.json();
-      storeUserInLocalStorage('user', JSON.stringify(jsonResponse));
-    } catch (error) {
-      console.error(console.error());
+    let doesUserExist = await doesUserExistInDatabase(users.response);
+    if (doesUserExist === true) {
+      return;
+    } else {
+      try {
+        let response = await fetch(`${config.url}/translations`, {
+          method: 'POST',
+          headers: {
+            'X-API-Key': config.apiKey,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            id: uniq,
+            username: userInput,
+            translations: []
+          })
+        });
+        let jsonResponse = await response.json();
+        storeUserInLocalStorage('user', JSON.stringify(jsonResponse));
+      } catch (error) {
+        console.error(console.error());
+      }
     }
   };
 
+  const doesUserExistInDatabase = async (users) => {
+    for (const user of users) {
+      if (user.username === userInput) {
+        storeUserInLocalStorage('user', JSON.stringify(user));
+        return true;
+      }
+    }
+  };
   const storeUserInLocalStorage = (key, userObject) => {
     localStorage.setItem(key, userObject);
   };
