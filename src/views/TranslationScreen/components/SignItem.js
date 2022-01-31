@@ -3,7 +3,7 @@ import './SignItem.css';
 const SignItem = ({ signImage }) => {
   return (
     <>
-      <img src={signImage} />
+      <img className="sign-item-img" src={signImage} />
     </>
   );
 };

@@ -1,4 +1,4 @@
-.card {
+.sign-language-card {
   display: flex;
   width: 50vw;
   height: 40vh;
@@ -22,11 +22,11 @@
   margin-left: 0%;
 }
 
-.container {
+.sign-language-container {
   align-self: center;
 }
 
-.box-container {
+.sign-language-box-container {
   margin-bottom: 250px;
   align-self: center;
 }

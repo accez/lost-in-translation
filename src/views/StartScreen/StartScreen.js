@@ -1,4 +1,5 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import InputComponent from '../../components/InputComponent/InputComponent';
 import { UserContext } from '../../helpers/UserContext';
@@ -15,7 +16,16 @@ const StartScreen = () => {
   const [, setIsLoggedIn] = loggedIn;
   const [, setUsernameValue] = username;
   const [, setUserID] = userId;
+  const navigate = useNavigate();
   const users = useFetch(`${config.url}/translations`, {});
+
+  useEffect(() => {
+    const user = localStorage.getItem('user');
+    if (user) {
+      setIsLoggedIn(true);
+      navigateToTranslationPage();
+    }
+  }, []);
 
   const handleSubmit = async (event) => {
     const uniq = new Date().getTime();
@@ -39,9 +49,8 @@ const StartScreen = () => {
         });
         let jsonResponse = await response.json();
         storeUserInLocalStorage('user', JSON.stringify(jsonResponse));
-        setUsernameValue(jsonResponse.username);
-        setUserID(jsonResponse.id);
-        setIsLoggedIn(true);
+        setPropValues(jsonResponse.username, jsonResponse.id, true);
+        navigateToTranslationPage();
       } catch (error) {
         console.error(console.error());
       }
@@ -58,12 +67,30 @@ const StartScreen = () => {
     for (const user of users) {
       if (user.username === userInput) {
         storeUserInLocalStorage('user', JSON.stringify(user));
-        setUsernameValue(user.username);
-        setUserID(user.id);
-        setIsLoggedIn(true);
+        setPropValues(user.username, user.id, true);
+        navigateToTranslationPage();
         return true;
       }
     }
+  };
+  /**
+   * Sets the properties inside UserContext
+   * @param {String} username The username value
+   * @param {Number} userId The userId value
+   * @param {Boolean} isLoggedIn If user is logged in or not
+   */
+  const setPropValues = (username, userId, isLoggedIn) => {
+    setUsernameValue(username);
+    setUserID(userId);
+    setIsLoggedIn(isLoggedIn);
+  };
+
+  /**
+   * Navigates to translation page
+   * @returns Navigation to translation page.
+   */
+  const navigateToTranslationPage = () => {
+    navigate(`/translation`);
   };
 
   /**
@@ -85,7 +112,7 @@ const StartScreen = () => {
 
   return (
     <div className="start-screen-body">
-      <div className="container">
+      <div className="start-screen-container">
         <div className="logo-container">
           <div>
             <img className="logo" src={logo}></img>
@@ -96,8 +123,8 @@ const StartScreen = () => {
             <h2>Get started</h2>
           </div>
         </div>
-        <div className="box-container">
-          <div className="card">
+        <div className="start-screen-box-container ">
+          <div className="start-screen-card">
             <InputComponent
               placeholder="What is your name?"
               handleSubmit={handleSubmit}
