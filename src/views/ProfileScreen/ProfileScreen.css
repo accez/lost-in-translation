@@ -1,4 +1,4 @@
-.translation-screen-body {
+.profile-screen-body {
   height: 100vh;
   background: linear-gradient(to top, #fff 65%, #fdcd3b 65%);
   display: flex;
@@ -7,13 +7,12 @@
   flex-direction: column;
 }
 
-.input {
-  position: absolute;
-  margin-top: -34%;
-  margin-left: 35%;
+.logged-in-user {
+  margin-left: 45%;
+  margin-bottom: 32%;
 }
 
-.logged-in-user {
-  margin-left: 150%;
-  margin-bottom: 10%;
+li {
+  margin-top: 0%;
+  margin-left: 47%;
 }
