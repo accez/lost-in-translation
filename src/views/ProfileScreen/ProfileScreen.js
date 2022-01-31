@@ -3,6 +3,7 @@ import './ProfileScreen.css';
 
 function ProfileScreen() {
   const [translations, SetTranslations] = useState([]);
+  const loggedInUser = 'logged in user';
   useEffect(async () => {
     const response = await fetch('https://spa-lb-experis-assignment.herokuapp.com/translations/1');
     const json = await response.json();
@@ -62,7 +63,7 @@ function ProfileScreen() {
   }
   return (
     <div className="profile-screen-body">
-      <h1 className="logged-in-user">Logged in user</h1>
+      <h1 className="logged-in-user">{loggedInUser}</h1>
       {translations.map((translation, index) => (
         <li key={index}>
           {translation}
