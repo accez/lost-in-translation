@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 
 import InputComponent from '../../components/InputComponent/InputComponent';
+import { UserContext } from '../../helpers/UserContext';
 import { config } from '../../helpers/config';
 import useFetch from '../../helpers/useFetch';
 
@@ -10,6 +11,10 @@ import './StartScreen.css';
 
 const StartScreen = () => {
   const [userInput, setUserInput] = useState('');
+  const { loggedIn, username, userId } = useContext(UserContext);
+  const [, setIsLoggedIn] = loggedIn;
+  const [, setUsernameValue] = username;
+  const [, setUserID] = userId;
   const users = useFetch(`${config.url}/translations`, {});
 
   const handleSubmit = async (event) => {
@@ -34,6 +39,9 @@ const StartScreen = () => {
         });
         let jsonResponse = await response.json();
         storeUserInLocalStorage('user', JSON.stringify(jsonResponse));
+        setUsernameValue(jsonResponse.username);
+        setUserID(jsonResponse.id);
+        setIsLoggedIn(true);
       } catch (error) {
         console.error(console.error());
       }
@@ -50,6 +58,9 @@ const StartScreen = () => {
     for (const user of users) {
       if (user.username === userInput) {
         storeUserInLocalStorage('user', JSON.stringify(user));
+        setUsernameValue(user.username);
+        setUserID(user.id);
+        setIsLoggedIn(true);
         return true;
       }
     }
