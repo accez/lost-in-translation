@@ -16,11 +16,11 @@ h2 {
   flex-direction: column;
 }
 
-.container {
+.start-screen-container {
   align-self: center;
 }
 
-.box-container {
+.start-screen-box-container {
   margin-bottom: 250px;
   align-self: center;
 }
@@ -50,7 +50,7 @@ h2 {
   width: 200px;
 }
 
-.card {
+.start-screen-card {
   display: flex;
   align-items: center;
   justify-content: center;

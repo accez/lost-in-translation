@@ -85,7 +85,7 @@ const StartScreen = () => {
 
   return (
     <div className="start-screen-body">
-      <div className="container">
+      <div className="start-screen-container">
         <div className="logo-container">
           <div>
             <img className="logo" src={logo}></img>
@@ -96,8 +96,8 @@ const StartScreen = () => {
             <h2>Get started</h2>
           </div>
         </div>
-        <div className="box-container">
-          <div className="card">
+        <div className="start-screen-box-container ">
+          <div className="start-screen-card">
             <InputComponent
               placeholder="What is your name?"
               handleSubmit={handleSubmit}
