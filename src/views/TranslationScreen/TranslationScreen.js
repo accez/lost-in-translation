@@ -54,7 +54,7 @@ const TranslationScreen = () => {
   return (
     <div className="translation-screen-body">
       <div className="input">
-        <h1 className="logged-in-user">Love</h1>
+        <h1 className="logged-in-user">Logged in user</h1>
         <InputComponent placeholder={placeHolder} handleSubmit={(e) => submitTranslation(e)} />
       </div>
 
