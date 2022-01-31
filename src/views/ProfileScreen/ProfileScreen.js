@@ -64,6 +64,7 @@ function ProfileScreen() {
   return (
     <div className="profile-screen-body">
       <h1 className="logged-in-user">{loggedInUser}</h1>
+      <h2 className="translations-header">Translations</h2>
       {translations.map((translation, index) => (
         <li key={index}>
           {translation}
