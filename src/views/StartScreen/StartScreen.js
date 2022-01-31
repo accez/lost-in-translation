@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import InputComponent from '../../components/InputComponent/InputComponent';
@@ -14,10 +14,18 @@ const StartScreen = () => {
   const [userInput, setUserInput] = useState('');
   const { loggedIn, username, userId } = useContext(UserContext);
   const [, setIsLoggedIn] = loggedIn;
-  const [usernameValue, setUsernameValue] = username;
+  const [, setUsernameValue] = username;
   const [, setUserID] = userId;
   const navigate = useNavigate();
   const users = useFetch(`${config.url}/translations`, {});
+
+  useEffect(() => {
+    const user = localStorage.getItem('user');
+    if (user) {
+      setIsLoggedIn(true);
+      navigateToTranslationPage();
+    }
+  }, []);
 
   const handleSubmit = async (event) => {
     const uniq = new Date().getTime();
@@ -61,7 +69,6 @@ const StartScreen = () => {
         storeUserInLocalStorage('user', JSON.stringify(user));
         setPropValues(user.username, user.id, true);
         navigateToTranslationPage();
-        console.log(usernameValue);
         return true;
       }
     }
