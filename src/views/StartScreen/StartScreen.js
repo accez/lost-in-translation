@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import InputComponent from '../../components/InputComponent/InputComponent';
 import { UserContext } from '../../helpers/UserContext';
@@ -13,8 +14,9 @@ const StartScreen = () => {
   const [userInput, setUserInput] = useState('');
   const { loggedIn, username, userId } = useContext(UserContext);
   const [, setIsLoggedIn] = loggedIn;
-  const [, setUsernameValue] = username;
+  const [usernameValue, setUsernameValue] = username;
   const [, setUserID] = userId;
+  const navigate = useNavigate();
   const users = useFetch(`${config.url}/translations`, {});
 
   const handleSubmit = async (event) => {
@@ -39,9 +41,8 @@ const StartScreen = () => {
         });
         let jsonResponse = await response.json();
         storeUserInLocalStorage('user', JSON.stringify(jsonResponse));
-        setUsernameValue(jsonResponse.username);
-        setUserID(jsonResponse.id);
-        setIsLoggedIn(true);
+        setPropValues(jsonResponse.username, jsonResponse.id, true);
+        navigateToTranslationPage();
       } catch (error) {
         console.error(console.error());
       }
@@ -58,12 +59,31 @@ const StartScreen = () => {
     for (const user of users) {
       if (user.username === userInput) {
         storeUserInLocalStorage('user', JSON.stringify(user));
-        setUsernameValue(user.username);
-        setUserID(user.id);
-        setIsLoggedIn(true);
+        setPropValues(user.username, user.id, true);
+        navigateToTranslationPage();
+        console.log(usernameValue);
         return true;
       }
     }
+  };
+  /**
+   * Sets the properties inside UserContext
+   * @param {String} username The username value
+   * @param {Number} userId The userId value
+   * @param {Boolean} isLoggedIn If user is logged in or not
+   */
+  const setPropValues = (username, userId, isLoggedIn) => {
+    setUsernameValue(username);
+    setUserID(userId);
+    setIsLoggedIn(isLoggedIn);
+  };
+
+  /**
+   * Navigates to translation page
+   * @returns Navigation to translation page.
+   */
+  const navigateToTranslationPage = () => {
+    navigate(`/translation`);
   };
 
   /**
