@@ -6,7 +6,7 @@ const ProfileScreen = () => {
   let navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem('user'));
   const [translations, SetTranslations] = useState([]);
-  const [deletedTranslation, SetDeletedTranslation] = useState('');
+  //const [deletedTranslation, SetDeletedTranslation] = useState(0);
   useEffect(async () => {
     const response = await fetch(
       'https://spa-lb-experis-assignment.herokuapp.com/translations/' + user.id
@@ -24,7 +24,7 @@ const ProfileScreen = () => {
       };
     });
     SetTranslations(activeTranslations.slice(-10));
-  }, [deletedTranslation]);
+  });
 
   async function DeleteTranslation(translation) {
     const response = await fetch(
@@ -83,10 +83,8 @@ const ProfileScreen = () => {
         <li key={index}>
           {translation}
           <button
-            onClick={(e) => {
+            onClick={() => {
               DeleteTranslation(translation);
-              SetDeletedTranslation(translation);
-              console.log(e);
             }}>
             Delete
           </button>
