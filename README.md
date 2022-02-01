@@ -51,7 +51,7 @@ npm start
 
 [@Simon Palmgren](https://github.com/accez)
 
-[@Love Beiling](https://github.com/mikaellove)
+[@Love Beling](https://github.com/mikaellove)
 
 ## License
 
