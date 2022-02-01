@@ -32,7 +32,7 @@
 
 ## Component Tree
 
-![Screenshot](component-tree.png)
+![Screenshot](Component-tree.png)
 
 ## Development
 
