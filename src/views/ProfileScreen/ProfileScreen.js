@@ -1,18 +1,16 @@
 import { useEffect, useState } from 'react';
 import './ProfileScreen.css';
 import { useNavigate } from 'react-router-dom';
-import { useContext } from 'react';
-import { UserContext } from '../../helpers/UserContext';
 
 const ProfileScreen = () => {
   let navigate = useNavigate();
-  const { username, userId } = useContext(UserContext);
+  const user = JSON.parse(localStorage.getItem('user'));
   const [translations, SetTranslations] = useState([]);
   let clicked = false;
-
   useEffect(async () => {
+    console.log(user.id);
     const response = await fetch(
-      'https://spa-lb-experis-assignment.herokuapp.com/translations/' + userId[0]
+      'https://spa-lb-experis-assignment.herokuapp.com/translations/' + user.id
     );
     const json = await response.json();
     const activeTranslations = json.translations.filter((translation) => {
@@ -29,11 +27,11 @@ const ProfileScreen = () => {
     console.log(addProp);
     console.log(activeTranslations);
     SetTranslations(activeTranslations.slice(-10));
-  }, [clicked]);
+  }, []);
 
   async function DeleteTranslation(translation) {
     const response = await fetch(
-      'https://spa-lb-experis-assignment.herokuapp.com/translations/' + userId[0]
+      'https://spa-lb-experis-assignment.herokuapp.com/translations/' + user.id
     );
     const json = await response.json();
 
@@ -49,7 +47,7 @@ const ProfileScreen = () => {
     const apiURL = 'https://spa-lb-experis-assignment.herokuapp.com';
     const apiKey = 'X9dHGcSU9kuwKyxz2/p+TA==';
     console.log(json.translations);
-    fetch(`${apiURL}/translations/${userId[0]}`, {
+    fetch(`${apiURL}/translations/${user.id}`, {
       method: 'PATCH', // NB: Set method to PATCH
       headers: {
         'X-API-Key': apiKey,
@@ -69,9 +67,8 @@ const ProfileScreen = () => {
       .then((updatedUser) => {
         console.log(updatedUser);
       })
-      .catch((error) => {
-        console.log(error);
-        alert(error);
+      .catch(() => {
+        //console.log(error);
       });
 
     window.location.reload(false);
@@ -84,7 +81,7 @@ const ProfileScreen = () => {
   }
   return (
     <div className="profile-screen-body">
-      <h1 className="logged-in-user">{username}</h1>
+      <h1 className="logged-in-user">{user.username}</h1>
       <h2 className="translations-header">Translations</h2>
       {translations.map((translation, index) => (
         <li key={index}>
