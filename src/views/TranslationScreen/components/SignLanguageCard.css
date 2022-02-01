@@ -5,7 +5,8 @@
   border-radius: 10px;
   box-shadow: 0 0px 15px 0 rgba(0, 0, 0, 0.7);
   background: linear-gradient(180deg, #fff 87%, #845ec2 13%);
-  margin-top: 50%;
+  justify-content: center;
+  margin-top: 10%;
 }
 
 .output-area {
@@ -27,6 +28,5 @@
 }
 
 .sign-language-box-container {
-  margin-bottom: 250px;
   align-self: center;
 }

@@ -62,10 +62,11 @@ const TranslationScreen = () => {
   console.log(userId[0]);
   return (
     <div className="translation-screen-body">
-      <div className="input">
-        <h1 onClick={() => navigate('/profile')} className="logged-in-user">
-          {username}
-        </h1>
+      <h1 onClick={() => navigate('/profile')} className="translation-screen-logged-in-user">
+        {username}
+        Janne
+      </h1>
+      <div className="translation-screen-input">
         <InputComponent placeholder={placeHolder} handleSubmit={(e) => submitTranslation(e)} />
       </div>
 
