@@ -19,6 +19,9 @@ const StartScreen = () => {
   const navigate = useNavigate();
   const users = useFetch(`${config.url}/translations`, {});
 
+  /**
+   * On mounted checks if the user exist in local storage.
+   */
   useEffect(() => {
     const user = localStorage.getItem('user');
     if (user) {
@@ -30,10 +33,12 @@ const StartScreen = () => {
   const handleSubmit = async (event) => {
     const uniq = new Date().getTime();
     event.preventDefault();
+    //Checks if the user exist in database.
     let doesUserExist = await doesUserExistInDatabase(users.response);
     if (doesUserExist === true) {
       return;
     } else {
+      //Attempts to create a user.
       try {
         let response = await fetch(`${config.url}/translations`, {
           method: 'POST',
@@ -60,6 +65,7 @@ const StartScreen = () => {
   /**
    *Check if user exist.
    * If the user exists then it will be added to local storage.
+   * Then it will send the user to the translation page.
    * @param {Object} users The fetched users object
    * @returns {Boolean} If the user exist in database
    */

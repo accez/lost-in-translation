@@ -2,7 +2,6 @@ import React from 'react';
 import './InputComponent.css';
 
 import keyboard from '../../assets/outline_keyboard_black_24dp.png';
-// eslint-disable-next-line react/prop-types
 const InputComponent = ({ placeholder, handleSubmit, handleOnChange }) => {
   return (
     <>

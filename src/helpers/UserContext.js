@@ -1,5 +1,8 @@
 import { createContext, useState } from 'react';
 
+/**
+ * Setup for contextAPI
+ */
 export const UserContext = createContext(null);
 
 const UserProvider = ({ children }) => {
