@@ -10,7 +10,8 @@ const TranslationScreen = () => {
 
   const apiURL = 'https://spa-lb-experis-assignment.herokuapp.com';
   const apiKey = 'X9dHGcSU9kuwKyxz2/p+TA==';
-  //const userId = 1; // Update user with id 1
+
+  // Adds the inputed translation to the users record on the database.
   async function UpdateUserTranslation(translation) {
     const response = await fetch(
       'https://spa-lb-experis-assignment.herokuapp.com/translations/' + user.id
@@ -44,7 +45,9 @@ const TranslationScreen = () => {
       });
   }
 
+  // Invokes when user presses the submit button.
   const submitTranslation = (e) => {
+    if (e.target[0].value === '') return;
     e.preventDefault();
     SetTranslateInput(e.target[0].value.toLowerCase());
     UpdateUserTranslation(e.target[0].value);

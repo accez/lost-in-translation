@@ -2,11 +2,15 @@ import { useEffect, useState } from 'react';
 import './ProfileScreen.css';
 import { useNavigate } from 'react-router-dom';
 
+//This is the profile page where the user can view their ten latest translations, delete them and log out from their account.
+
 const ProfileScreen = () => {
   let navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem('user'));
   const [translations, SetTranslations] = useState([]);
-  //const [deletedTranslation, SetDeletedTranslation] = useState(0);
+
+  // Fetches logged in users translations on each update.
+  // Only displays the ten latest entries and the ones not markes as deleted
   useEffect(async () => {
     const response = await fetch(
       'https://spa-lb-experis-assignment.herokuapp.com/translations/' + user.id
@@ -26,6 +30,8 @@ const ProfileScreen = () => {
     SetTranslations(activeTranslations.slice(-10));
   });
 
+  // Called when user clicks on delete button.
+  // Marks a translation as deleted in the database.
   async function DeleteTranslation(translation) {
     const response = await fetch(
       'https://spa-lb-experis-assignment.herokuapp.com/translations/' + user.id
@@ -67,6 +73,7 @@ const ProfileScreen = () => {
       });
   }
 
+  // Removes logged in user from localstorage and navigates back to home page.
   function LogOut() {
     localStorage.removeItem('user');
 
