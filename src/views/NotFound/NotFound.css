@@ -1,0 +1,14 @@
+.not-found-container {
+  height: 100vh;
+  background: linear-gradient(180deg, #fdcd3b 50%, #fff 50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.not-found-middle-section {
+  color: black;
+}
+
+.not-found-h1 {
+  font-size: 82px;
+}
