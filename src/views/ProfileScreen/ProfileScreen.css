@@ -4,20 +4,23 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  flex-direction: column;
 }
 
 .logged-in-user {
-  margin-left: 45%;
-  margin-top: -20%;
+  color: black;
+  text-align: right;
+  margin-right: 20px;
+  margin-top: 20px;
 }
 
 li {
-  margin-top: 2%;
-  margin-left: 45%;
 }
 
 .translations-header {
-  margin-top: 10%;
-  margin-left: 45%;
+  color: black;
+  text-align: center;
+}
+
+.logout {
+  margin: auto;
 }

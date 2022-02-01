@@ -90,6 +90,7 @@ const ProfileScreen = () => {
       ))}
 
       <button
+        className="logout"
         onClick={() => {
           LogOut();
         }}>
