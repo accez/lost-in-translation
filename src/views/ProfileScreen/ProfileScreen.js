@@ -81,6 +81,7 @@ const ProfileScreen = () => {
         <li key={index}>
           {translation}
           <button
+            className="delete"
             onClick={() => {
               DeleteTranslation(translation);
             }}>

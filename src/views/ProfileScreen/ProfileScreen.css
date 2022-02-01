@@ -4,21 +4,31 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
+  position: relative;
 }
 
 .logged-in-user {
   color: black;
-  text-align: right;
-  margin-right: 20px;
   margin-top: 20px;
+  margin-right: 20px;
+  text-align: right;
 }
 
 li {
+  text-align: center;
+  padding-bottom: 30px;
+}
+
+li button {
+  padding-right: 40px;
 }
 
 .translations-header {
+  display: flex;
   color: black;
-  text-align: center;
+  margin: auto;
+  padding-bottom: 200px;
+  margin-top: 100px;
 }
 
 .logout {
