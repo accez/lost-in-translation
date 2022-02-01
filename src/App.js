@@ -6,6 +6,7 @@ import StartScreen from './views/StartScreen/StartScreen';
 import TranslationScreen from './views/TranslationScreen/TranslationScreen';
 import ProfileScreen from './views/ProfileScreen/ProfileScreen';
 import ProtectedRoutes from './components/ProtectedRoutes';
+import NotFound from './views/NotFound/NotFound';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route path="/translation" element={<TranslationScreen />} />
             <Route path="/profile" element={<ProfileScreen />} />
           </Route>
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </div>
