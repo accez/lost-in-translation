@@ -16,3 +16,7 @@
   text-align: right;
   margin-right: 20px;
 }
+.translation-screen-logged-in-user:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}

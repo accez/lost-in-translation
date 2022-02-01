@@ -64,7 +64,6 @@ const TranslationScreen = () => {
     <div className="translation-screen-body">
       <h1 onClick={() => navigate('/profile')} className="translation-screen-logged-in-user">
         {username}
-        Janne
       </h1>
       <div className="translation-screen-input">
         <InputComponent placeholder={placeHolder} handleSubmit={(e) => submitTranslation(e)} />
