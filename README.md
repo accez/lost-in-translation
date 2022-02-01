@@ -1,70 +1,58 @@
-# Getting Started with Create React App
+# Lost in translation (Noroff assignment)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**Instructions:** Build an online sign language translator as a Single Page Application using the React framework.The application will have one main feature: to act as a “translator” from regular text to sign language. The application must be able to translate English words and short sentences to American sign language and displaying it as pictures.
 
-## Available Scripts
+**Goal:** On completion of this assignment, you will be able to:
 
-In the project directory, you can run:
+- Create React applications using React's CRA (create-react-app)
+- Use React components to build an application
+- Use the React Router to navigate between components
+- Use Redux to manage state globally in a React application
+- Communicate with an API using React
 
-### `npm start`
+### Startup page - Login screen
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- The user must be able to enter their name.
+- Save the username to the Translation API.
+- Users that are already logged in may automatically be redirected to the Translation page.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Translation page - Page where user types in phrase to be translated into sign-language
 
-### `npm test`
+- A user may only view this page if they are currently logged into the app.
+- The user types in the input box at the top of the page. The user must click on the “translate” button to the right of the input box to trigger the translation.
+- Translations must be stored using an API.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Profile page - Page that shows translation history
 
-### `npm run build`
+- The profile page must display the last 10 translations for the current user. You only need to display the text of the translation.
+- There must also be a button to clear the translations. This should “delete” in your API and no longer display on the profile page. To simplify things, you may simply delete the records, but you should NEVER delete data from a database.
+- The Logout button should clear all the storage and return to the start page.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+[Application Demo](https://still-peak-37738.herokuapp.com/)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Component Tree
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![Screenshot](Component-tree.png)
 
-### `npm run eject`
+## Development
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash
+# Clone project
+git clone https://github.com/accez/lost-in-translation
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Install dependencies
+npm install
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+# Run local dev server
+npm start
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Maintainers
 
-## Learn More
+[@Simon Palmgren](https://github.com/accez)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+[@Love Beiling](https://github.com/mikaellove)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## License
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[MIT](https://choosealicense.com/licenses/mit/)
