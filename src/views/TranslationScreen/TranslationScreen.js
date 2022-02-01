@@ -3,8 +3,6 @@ import SignLanguageCard from './components/SignLanguageCard';
 import InputComponent from '../../components/InputComponent/InputComponent';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useContext } from 'react';
-import { UserContext } from '../../helpers/UserContext';
 
 const TranslationScreen = () => {
   let navigate = useNavigate();
@@ -15,7 +13,7 @@ const TranslationScreen = () => {
   //const userId = 1; // Update user with id 1
   async function UpdateUserTranslation(translation) {
     const response = await fetch(
-      'https://spa-lb-experis-assignment.herokuapp.com/translations/' + userId[0]
+      'https://spa-lb-experis-assignment.herokuapp.com/translations/' + user.id
     );
     const json = await response.json();
 
@@ -23,7 +21,7 @@ const TranslationScreen = () => {
     userPreviousTranslations.push(translation);
     let updatedRecord = userPreviousTranslations;
 
-    fetch(`${apiURL}/translations/${userId[0]}`, {
+    fetch(`${apiURL}/translations/${user.id}`, {
       method: 'PATCH', // NB: Set method to PATCH
       headers: {
         'X-API-Key': apiKey,
@@ -57,13 +55,13 @@ const TranslationScreen = () => {
   };
   const placeHolder = 'Translate this text';
 
-  const { username, userId } = useContext(UserContext);
-  console.log(username);
-  console.log(userId[0]);
+  const user = JSON.parse(localStorage.getItem('user'));
+  console.log(user.username);
+  console.log(user.id);
   return (
     <div className="translation-screen-body">
       <h1 onClick={() => navigate('/profile')} className="translation-screen-logged-in-user">
-        {username}
+        {user.username}
       </h1>
       <div className="translation-screen-input">
         <InputComponent placeholder={placeHolder} handleSubmit={(e) => submitTranslation(e)} />
