@@ -61,11 +61,9 @@ const ProfileScreen = () => {
         }
         return response.json();
       })
-      .then(() => {
-        //console.log(updatedUser);
-      })
-      .catch(() => {
-        //console.log(error);
+      .then(() => {})
+      .catch((error) => {
+        console.error(error);
       });
   }
 

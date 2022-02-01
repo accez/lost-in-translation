@@ -38,11 +38,8 @@ const TranslationScreen = () => {
         }
         return response.json();
       })
-      .then((updatedUser) => {
-        console.log(updatedUser);
-      })
       .catch((error) => {
-        console.log(error);
+        console.error(error);
         alert(error);
       });
   }
@@ -56,8 +53,6 @@ const TranslationScreen = () => {
   const placeHolder = 'Translate this text';
 
   const user = JSON.parse(localStorage.getItem('user'));
-  console.log(user.username);
-  console.log(user.id);
   return (
     <div className="translation-screen-body">
       <h1 onClick={() => navigate('/profile')} className="translation-screen-logged-in-user">
