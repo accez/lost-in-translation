@@ -46,7 +46,7 @@ const TranslationScreen = () => {
 
   const submitTranslation = (e) => {
     e.preventDefault();
-    SetTranslateInput(e.target[0].value);
+    SetTranslateInput(e.target[0].value.toLowerCase());
     UpdateUserTranslation(e.target[0].value);
     e.target[0].value = '';
   };
