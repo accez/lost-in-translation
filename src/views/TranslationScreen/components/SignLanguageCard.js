@@ -1,6 +1,5 @@
 import './SignLanguageCard.css';
 import SignList from './SignList';
-// eslint-disable-next-line react/prop-types
 const SignLanguageCard = ({ input }) => {
   return (
     <div className="sign-language-box-container">
